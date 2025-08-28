@@ -37,6 +37,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --emerald: #0f3a36;
+  --emerald-deep: #0b2e2a;
+  --gold: #c9a27a;
+  --gold-deep: #b5885f;
+  --gold-soft: #e3c3a1;
 }
 
 .dark {
@@ -72,10 +77,16 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+  --emerald: #0f3a36;
+  --emerald-deep: #0b2e2a;
+  --gold: #c9a27a;
+  --gold-deep: #b5885f;
+  --gold-soft: #e3c3a1;
 }
 
 @theme inline {
-  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --font-cinzel: var(--font-cinzel);
+  --font-inter: var(--font-inter);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -112,6 +123,11 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --emerald: #0f3a36;
+  --emerald-deep: #0b2e2a;
+  --gold: #c9a27a;
+  --gold-deep: #b5885f;
+  --gold-soft: #e3c3a1;
 }
 
 @layer base {
@@ -121,4 +137,160 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Keyframes */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes grainShift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-10%, -10%);
+  }
+}
+
+@keyframes drawStroke {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.9;
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0px rgba(201, 162, 122, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(201, 162, 122, 0.3));
+  }
+}
+
+/* Utility classes */
+.text-gold {
+  color: var(--gold);
+}
+.fill-gold {
+  fill: var(--gold);
+}
+.stroke-gold {
+  stroke: var(--gold);
+}
+.bg-gold-grad {
+  background-image: linear-gradient(
+    110deg,
+    rgba(201, 162, 122, 0.2),
+    rgba(201, 162, 122, 0.85),
+    rgba(201, 162, 122, 0.2)
+  );
+  background-size: 200% 100%;
+}
+.text-emerald {
+  color: var(--emerald);
+}
+.fill-emerald {
+  fill: var(--emerald);
+}
+.stroke-emerald {
+  stroke: var(--emerald);
+}
+.bg-emerald-grad {
+  background-image: linear-gradient(
+    110deg,
+    rgba(15, 58, 54, 0.2),
+    rgba(15, 58, 54, 0.85),
+    rgba(15, 58, 54, 0.2)
+  );
+  background-size: 200% 100%;
+}
+
+.font-cinzel {
+  font-family: var(--font-cinzel), serif;
+}
+.font-inter {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.9s ease-out both;
+}
+.animate-float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+.animate-shimmer {
+  animation: shimmer 3.8s linear infinite;
+}
+.animate-draw-stroke {
+  animation: drawStroke 2.2s ease forwards;
+}
+.animate-glow {
+  animation: glow 5s ease-in-out infinite;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-350 {
+  animation-delay: 0.35s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+.delay-450 {
+  animation-delay: 0.45s;
+}
+.delay-550 {
+  animation-delay: 0.55s;
+}
+.delay-600 {
+  animation-delay: 0.6s;
+}
+.delay-800 {
+  animation-delay: 0.8s;
+}
+.delay-1000 {
+  animation-delay: 1s;
 }
